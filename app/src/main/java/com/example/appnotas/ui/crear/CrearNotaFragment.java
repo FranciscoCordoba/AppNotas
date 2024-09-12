@@ -45,6 +45,13 @@ public class CrearNotaFragment extends Fragment {
                 //mViewModel.resetearMutableM();
             }
         });
+
+        mViewModel.getMMensaje().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                Toast.makeText(getContext(), s, Toast.LENGTH_SHORT).show();
+            }
+        });
 /*
         mViewModel.getMNoConfirmado().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
             @Override

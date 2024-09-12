@@ -18,6 +18,7 @@ import java.util.Comparator;
 public class CrearNotaFragmentViewModel extends AndroidViewModel {
 
     private MutableLiveData<Boolean> MConfirmado;
+    private MutableLiveData<String> MMensaje;
     //private MutableLiveData<Boolean> MNoConfirmado;
 
     public CrearNotaFragmentViewModel(@NonNull Application application) {
@@ -30,6 +31,13 @@ public class CrearNotaFragmentViewModel extends AndroidViewModel {
             //MConfirmado.setValue(false);
         }
         return MConfirmado;
+    }
+
+    public LiveData<String> getMMensaje(){
+        if(MMensaje == null){
+            MMensaje = new MutableLiveData<>();
+        }
+        return MMensaje;
     }
 /*
     public LiveData<Boolean> getMNoConfirmado(){
@@ -54,7 +62,11 @@ public class CrearNotaFragmentViewModel extends AndroidViewModel {
             MainActivity.notas.add(nota);
             MainActivity.notas.sort(Comparator.comparing(Nota::getTitulo));
             MConfirmado.setValue(true);
-        }/*else{
+        }else{
+            MMensaje.setValue("ERROR: No debe tener el título vacío");
+        }
+
+        /*else{
             MNoConfirmado.setValue(true);
         }*/
     }
